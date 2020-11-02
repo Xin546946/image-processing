@@ -1,0 +1,29 @@
+img = imread('lena.png');
+img = rgb2gray(img);
+
+%图像左乘(-1)**(x+y)
+[m,n] = size(img)
+
+for i=1:m
+    for i=1:n
+        img_shift(m,n) = img(m,n)*((-1)^(m+n));
+    end
+end
+
+imshow(img_shift)
+
+F = fft2(img_shift);
+S = abs(F);
+imshow(S,[])
+
+img_conj = conj(F)
+imshow(abs(img_conj),[])
+
+img_ifft = real(ifft2(img_conj))
+imshow(abs(img_ifft),[])
+
+for i=1:m
+    for i=1:n
+        img_shift(m,n) = img(m,n)*((-1)^(m+n));
+    end
+end

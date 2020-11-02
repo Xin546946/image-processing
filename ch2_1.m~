@@ -1,0 +1,59 @@
+clc;
+clear;
+close all;
+
+L = 256;
+m = L/2; 
+f = rgb2gray(imread('lena.png'));
+
+% g = cell(size(E));
+% fun = 
+i = 1;
+j = 1;
+x = 0:0.1:10;
+figure
+for E = 0.0:0.5:3
+    h{j} = (1./(1 + (m./(double(x) + eps)).^E));
+    plot(x,h{j},'DisplayName', ['E = ' num2str(E) '.']);
+    j = j+1;
+    hold on
+end
+legend('show');
+for E = 0.0:0.5:3
+    g{i} = uint8((1./(1 + (m./(double(f) + eps)).^E)).*255);
+    i = i+1;
+end
+figure
+subplot(4,2,1)
+imhist(f)
+for i = 1:8
+    
+    imhist(g{i})
+    
+    
+end
+figure
+subplot(4,2,1)
+imshow(f)
+title('original image.')
+subplot(4,2,2)
+imshow(g{1})
+title('E = 0.')
+subplot(4,2,3)
+imshow(g{2})
+title('E = 0.5.')
+subplot(4,2,4)
+imshow(g{3})
+title('E = 1.0.')
+subplot(4,2,5)
+imshow(g{4})
+title('E = 1.5.')
+subplot(4,2,6)
+imshow(g{5})
+title('E = 2.0.')
+subplot(4,2,7)
+imshow(g{6})
+title('E = 2.5.')
+subplot(4,2,8)
+imshow(g{7})
+title('E = 3.0.')

@@ -1,0 +1,34 @@
+clear all
+%% check the relation of Hlp + Hhp = 1
+
+
+I = imread('lena.png');
+f = rgb2gray(I);
+% imshow(J)
+% get size
+[m n] = size(f);
+% DFT transformation and shift the original point in the center
+F = fft2(f);
+Fc = fftshift(log(1+abs(F)));
+
+
+figure(1)
+imshow(Sc,[])
+
+
+
+
+
+%% ideal low pass filter
+
+Hlp = lpfilter('ideal',220,220,10,10);
+
+H = freqz2(Hlp);
+figure(3)
+mesh(abs(Hlp))
+
+
+G = F.*Hlp;
+g = real(ifft2(G));
+figure(4)
+imshow(g,[])9

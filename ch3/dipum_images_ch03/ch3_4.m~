@@ -1,0 +1,5 @@
+img = imread('Fig0316(a)(moon).tif');
+imshow(img)
+% soble y filter 
+sobel_y = [-1,-2,-1;0,0,0;1,2,1];
+sobel_lap =
